@@ -8,6 +8,13 @@ router.get('/', function(req, res, next) {
   })
 });
 
+router.get('/:id', function(req, res, next) {
+  const id = req.params.id
+   db.getById('users', id).then(results => {
+     res.status(200).json({data: results})
+   })
+});
+
 router.post('/', function(req, res, next) {
   const user = {
     name: req.body.name,

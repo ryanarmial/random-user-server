@@ -13,7 +13,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use('/', indexRouter);
+app.get('/', function(req, res, next) {
+  res.send('Random User API')
+})
+app.use('/users', indexRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

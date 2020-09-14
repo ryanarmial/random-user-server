@@ -5,6 +5,9 @@ const database = require('knex')(connection)
    getAll(table){
     return database(table)
    },
+   getById(table, id) {
+    return database(table).where({id}).first()
+   },
    insertData(table, data) {
      return database(table).returning('id').insert(data)
    }
